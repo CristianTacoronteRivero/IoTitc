@@ -5,9 +5,9 @@ Modulo orientado a la creacion de funciones para ser ejecutadas en Raspberry
 import psutil
 
 
-def status_raspberry():
+def status_raspberry() -> any:
     """
-    :return: Devuelve tres variables donde
+    :return: cpu, ram, disk
     - cpu: representa el % de uso de CPU
     - ram: diccionario que contiene la memoria libre, total y porcentaje ocupada de RAM en MB.
       La estrcutura del diccionario correspondiente a la memoria RAM es la siguiente:
