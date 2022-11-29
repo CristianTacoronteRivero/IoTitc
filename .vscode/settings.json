@@ -3,5 +3,6 @@
     "editor.formatOnSave": true,
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "autoDocstring.docstringFormat": "sphinx"
+    "autoDocstring.docstringFormat": "sphinx",
+    "python.testing.pytestEnabled": true
 }
