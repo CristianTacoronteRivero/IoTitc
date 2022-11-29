@@ -7,7 +7,7 @@ import psutil
 
 def status_raspberry():
     """
-    :return: Devuelve tres variables donde:
+    :return: Devuelve tres variables donde
     - cpu: representa el % de uso de CPU
     - ram: diccionario que contiene la memoria libre, total y porcentaje ocupada de RAM en MB.
       La estrcutura del diccionario correspondiente a la memoria RAM es la siguiente:
