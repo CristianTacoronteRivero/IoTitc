@@ -55,25 +55,40 @@ class ToolInflux:
 
     def get_table(
         self,
-        measure: str = None,
+        measure: str = "*",
         table: str = None,
-        window_time: str = None,
-        group_by: str = None,
+        window_time: str = "24h",
+        group_by: str = "2m",
         query: bool | str = False,
     ) -> pd.DataFrame:
         """Devuelve un DataFrame según la query especificada
 
-        :param measure: , defaults to None
-        :type measure: str, optional
-        :param table: _description_, defaults to None
-        :type table: str, optional
-        :param window_time: _description_, defaults to None
-        :type window_time: str, optional
-        :param group_by: _description_, defaults to None
-        :type group_by: str, optional
-        :param query: _description_, defaults to False
-        :type query: bool | str, optional
-        :return: _description_
+        :param measure: Medidas de las tabla instanciada, por defecto "*".
+                        Nota: solo admite por ahora una medida o "*"
+        :type measure: str, opcional
+        :param table: Nombre de la tabla, por defecto None
+        :type table: str, opcional
+        :param window_time: Periodo de tiempo que se desea seleccionar, por defecto 24h.
+                            - s: segundos
+                            - m: minutos
+                            - h: horas
+                            - w: semana
+                            - M: mes
+                            - y: Año
+        :type window_time: str, opcional
+        :param group_by: Configura la agrupación de los datos, por defecto 2m.
+                            - s: segundos
+                            - m: minutos
+                            - h: horas
+                            - w: semana
+                            - M: mes
+                            - y: Año
+        :type group_by: str, opcional
+        :param query: Si no se especifica una query se aplica la selección que
+                    se encuentra por defecto. Si se quiere especificar una query
+                    se debe de introducir la consulta formato cadena; por defecto False
+        :type query: bool | str, opcional
+        :return: DataFrame que contiene los datos y las medidas
         :rtype: pd.DataFrame
         """
         if isinstance(query, bool):
@@ -89,7 +104,7 @@ class ToolInflux:
 
 if __name__ == "__main__":
     shelly_test = ToolInflux("10.141.188.140", "shelly_test")
-    df = shelly_test.read_table(
-        measure="*", table="data_shelly", window_time="2d", group_by="1m"
+    df = shelly_test.get_table(
+        measure=["temperature"], table="data_shelly", window_time="2d", group_by="1m"
     )
     print(df)
