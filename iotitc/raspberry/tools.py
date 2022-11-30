@@ -47,7 +47,7 @@ def status_raspberry() -> any:
         {
             "avaliable_ram": available_ram,
             "total_ram": total_ram,
-            "percentage_busy_info": round(mem_info, 2),
+            "percentage_busy_ram": round(mem_info, 2),
         },
         {
             "avaliable_disk": avaliable_disk,
